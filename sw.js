@@ -40,6 +40,7 @@ self.addEventListener("activate", e => {
   const respuesta = caches.keys().then(keys => {
     keys.forEach(key => {
       if (key !== STATIC_CACHE && key.includes("static")) caches.delete(key);
+      if (key !== DYNAMIC_CACHE && key.includes("dynamic")) caches.delete(key);
     });
     return caches.keys();
   });
